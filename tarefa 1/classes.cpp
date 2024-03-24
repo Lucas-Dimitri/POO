@@ -6,7 +6,6 @@ using namespace std;
 class Vehicle
 {
     private:
-
         //atributos de classe
         string tipo;
         int capacidade_carga;
@@ -39,7 +38,6 @@ class Vehicle
 class Clientes
 {
     private:
-
         //atributos de classe
         string nome;
         int idade;
@@ -50,7 +48,7 @@ class Clientes
         void setNome(int nome){ this->nome = nome; }
         string getNome(){ return this->nome; }
 
-        void setIdade(int idade) { this->idade = idade; }
+        void setIdade(int idade) { if(idade > 18) this->idade = idade; }
         int getIdade(){ return this->idade; }
 
         void setEndereco(int endereco){ this->endereco = endereco; }
@@ -60,7 +58,6 @@ class Clientes
 class Pedidos
 {
     private:
-
         //atributos de classe
         string cliente;
         string tipo_transporte;
