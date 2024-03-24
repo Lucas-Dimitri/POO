@@ -102,19 +102,23 @@ int main()
     carro1.setTipo("CarrO");
     
 
-    cout << carro1.getModelo() << "\n" << carro1.getTipo();
+    cout << carro1.getModelo() << "\n" << carro1.getTipo() << "\n";
 
     Clientes cliente1;
     cliente1.setEndereco("Rua 123, 321");
     cliente1.setIdade(38);
     cliente1.setNome("Glauber");
 
-    Pedidos pedido1;
-    pedido1.setCliente(cliente1);
-    pedido1.setLocalColeta("Rua 123");
-    pedido1.setLocalEntrega("Rua 321");
-    pedido1.setPeso(1345);
-    pedido1.setTipoTransporte("carro");
-    pedido1.setVolumeCarga(234);
+    Pedidos *pedido1 = new Pedidos;
+    pedido1->setCliente(cliente1);
+    pedido1->setLocalColeta("Rua 123");
+    pedido1->setLocalEntrega("Rua 321");
+    pedido1->setPeso(1345);
+    pedido1->setTipoTransporte("carro");
+    pedido1->setVolumeCarga(234);
+
+    cout << pedido1->getLocalColeta();
+
+
 
 }
