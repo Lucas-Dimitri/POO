@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <list>
 
 using namespace std;
 
@@ -46,9 +47,16 @@ class Clientes
         string nome;
         int idade;
         string endereco;
+        string cpf;
 
     public:
         //metodos de classe
+
+        Clientes(string nome, int idade, string endereco, string cpf) :nome(nome), idade(idade), endereco(endereco), cpf(cpf) {}
+
+        // Default constructor
+        Clientes() : nome(""), idade(0), endereco(""), cpf("") {}
+
         void setNome(string nome){ this->nome = nome; }
         string getNome(){ return this->nome; }
 
@@ -57,6 +65,10 @@ class Clientes
 
         void setEndereco(string endereco){ this->endereco = endereco; }
         string getEndereco(){ return this->endereco; }
+
+        void setCPF(string cpf){ this->cpf = cpf; }
+        string getCPF(){ return this->cpf; }
+
 };
 
 class Pedidos
@@ -68,7 +80,7 @@ class Pedidos
         string local_coleta;
         string local_entrega;
         int peso_carga;
-        int volume_carga;
+        string volume_carga;
 
     public:
         //metodos de classe
@@ -87,8 +99,8 @@ class Pedidos
         void setPeso(int peso){ this->peso_carga = peso; }
         int getPeso(){ return this->peso_carga; }
 
-        void setVolumeCarga(int volume){ this->volume_carga = volume; }
-        int getVolumeCarga(){ return this->volume_carga; }
+        void setVolumeCarga(string volume){ this->volume_carga = volume; }
+        string getVolumeCarga(){ return this->volume_carga; }
 };
 
 int main()
@@ -104,10 +116,9 @@ int main()
 
     cout << carro1.getModelo() << "\n" << carro1.getTipo() << "\n";
 
-    Clientes cliente1;
-    cliente1.setEndereco("Rua 123, 321");
-    cliente1.setIdade(38);
-    cliente1.setNome("Glauber");
+    Clientes cliente1("Glauber", 38, "Rua 123, 321", "000.111.222-3");
+
+    cout << cliente1.getCPF() << "\n";
 
     Pedidos *pedido1 = new Pedidos;
     pedido1->setCliente(cliente1);
@@ -115,10 +126,12 @@ int main()
     pedido1->setLocalEntrega("Rua 321");
     pedido1->setPeso(1345);
     pedido1->setTipoTransporte("carro");
-    pedido1->setVolumeCarga(234);
+    pedido1->setVolumeCarga("10x10x10");
 
-    cout << pedido1->getLocalColeta();
+    cout << pedido1->getLocalColeta() << "\n";
 
+    pedido1->setLocalColeta("Rua 123123");
 
+    cout << pedido1->getLocalColeta() << "\n";
 
 }
