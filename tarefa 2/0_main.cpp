@@ -3,20 +3,10 @@
 #include "client.h"
 #include "pedidos.h"
 #include "vehicle.h"
-
+#include "caminhao.h"
 
 int main()
 {
-    Vehicle carro1;
-    carro1.setAnoFabricacao(2019);
-    carro1.setCapacidade(1542);
-    carro1.setChassi("9BD111060T5002156");
-    carro1.setLocalizacao("Florida, EUA");
-    carro1.setModelo("Toyota Supra");
-    carro1.setTipo("CarrO");
-    
-
-    std::cout << carro1.getModelo() << "\n" << carro1.getTipo() << "\n";
 
     Client cliente1("Glauber", 38, "Rua 123, 321", "000.111.222-3");
 
@@ -33,5 +23,11 @@ int main()
     pedido1.setLocalColeta("Rua 123123");
 
     std::cout << pedido1.getLocalColeta() << "\n";
+
+    Caminhao *caminhao1 = new Caminhao(100, 2000, "11111111111111111", "focus", "Rua ###", 3);
+
+    std::cout << caminhao1->getAltura() << "\n";
+
+    std::cout << caminhao1->getChassi() << "\n";
 
 }
