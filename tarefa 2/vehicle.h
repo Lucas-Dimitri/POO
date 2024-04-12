@@ -2,6 +2,7 @@
 #define VEHICLE_H
 
 #include <string>
+#include <vector>
 
 class Vehicle
 {
@@ -17,7 +18,7 @@ class Vehicle
         Vehicle();
         Vehicle(int capacidade_carga, int ano_fabricacao, std::string chassi, std::string modelo, std::string localizacao);
         ~Vehicle();
-        
+
         //metodos de classe
 
         int setCapacidade(int capacidade);

@@ -8,7 +8,7 @@ Pedidos::Pedidos(Client cliente, std::string tipo_transporte, std::string local_
 Pedidos::~Pedidos(){}
 
 //metodos de classe
-int Pedidos::setCliente(Client cliente){ this->cliente = cliente; }
+void Pedidos::setCliente(Client cliente){ this->cliente = cliente; }
 Client Pedidos::getCliente(){ return this->cliente; }
 
 int Pedidos::setTipoTransporte(std::string tipo_transporte)
@@ -63,6 +63,6 @@ int Pedidos::setVolumeCarga(std::string volume_carga)
         this->volume_carga = volume_carga;
         return 1;
     }
-    
+    return 0;
 }
 std::string Pedidos::getVolumeCarga(){ return this->volume_carga; }

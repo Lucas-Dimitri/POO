@@ -9,7 +9,12 @@ Vehicle::~Vehicle(){}
 
 int Vehicle::setCapacidade(int capacidade_carga)
 {
-    if (capacidade_carga > 10 && capacidade_carga < 1000000) this->capacidade_carga = capacidade_carga;
+    if (capacidade_carga > 10 && capacidade_carga < 1000000)
+    {
+        this->capacidade_carga = capacidade_carga;
+        return 1;
+    }
+    return 0;
 }
 int Vehicle::getCapacidade(){ return this->capacidade_carga; }
 

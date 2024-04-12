@@ -20,7 +20,7 @@ class Pedidos
         Pedidos(Client cliente, std::string tipo_transporte, std::string local_coleta, std::string local_entrega, int peso_carga, std::string volume_carga);
         ~Pedidos();
 
-        int setCliente(Client cliente);
+        void setCliente(Client cliente);
         Client getCliente();
 
         int setTipoTransporte(std::string transporte);
