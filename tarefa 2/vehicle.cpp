@@ -1,13 +1,6 @@
+#include "vehicle.h"
 #include <iostream>
 #include <string>
-#include "vehicle.h"
-
-Vehicle::Vehicle(): capacidade_carga(0), ano_fabricacao(0), chassi(""), modelo(""), localizacao("") {}
-Vehicle::Vehicle(int capacidade_carga, int ano_fabricacao, std::string chassi, std::string modelo, std::string localizacao) :capacidade_carga(capacidade_carga), ano_fabricacao(ano_fabricacao), chassi(chassi), modelo(modelo), localizacao(localizacao) {}
-Vehicle::~Vehicle(){}
-
-// Vehicle.cpp
-#include "vehicle.h"
 
 std::vector<Vehicle> Vehicle::vehicleList;
 
@@ -31,7 +24,7 @@ void Vehicle::buscarVeiculo(std::string chassi) {
     for (const auto& vehicle : vehicleList) {
         if (vehicle.getChassi() == chassi) {
             std::cout << "Model: " << vehicle.getModelo() << std::endl;
-            std::cout << "Chassis: " << vehicle.getChassi() << std::endl;
+            std::cout << "Chassi: " << vehicle.getChassi() << std::endl;
             std::cout << "Year: " << vehicle.getAnoFabricacao() << std::endl;
             std::cout << "Capacity: " << vehicle.getCapacidade() << std::endl;
             std::cout << "Location: " << vehicle.getLocalizacao() << std::endl;
