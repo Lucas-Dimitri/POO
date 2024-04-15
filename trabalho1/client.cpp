@@ -14,7 +14,7 @@ int Client::setNome(std::string nome){
     }
     return 0;
 }
-std::string Client::getNome(){ return this->nome; }
+std::string Client::getNome() const { return this->nome; }
 
 int Client::setIdade(int idade)
 {
@@ -25,7 +25,7 @@ int Client::setIdade(int idade)
     }
     return 0;
 }
-int Client::getIdade(){ return this->idade; }
+int Client::getIdade() const { return this->idade; }
 
 int Client::setEndereco(std::string endereco){
     if (endereco.size() > 10)
@@ -36,7 +36,7 @@ int Client::setEndereco(std::string endereco){
     return 0;
 
 }
-std::string Client::getEndereco(){ return this->endereco; }
+std::string Client::getEndereco() const { return this->endereco; }
 
 int Client::setCPF(std::string cpf)
 {
@@ -47,4 +47,21 @@ int Client::setCPF(std::string cpf)
     }
     return 0;
 }
-std::string Client::getCPF(){ return this->cpf; }
+std::string Client::getCPF() const { return this->cpf; }
+
+bool operator==(const Client &lhs, const Client &rhs)
+{
+    return lhs.getCPF() == rhs.getCPF() &&
+           lhs.getEndereco() == rhs.getEndereco() &&
+           lhs.getIdade() == rhs.getIdade() &&
+           lhs.getNome() == rhs.getNome();
+}
+
+std::ostream &operator<<(std::ostream &os, const Client &client)
+{
+    os << "Nome: " << client.getNome() << "\n"
+       << "CPF: " << client.getCPF() << "\n"
+       << "Endereco: " << client.getEndereco() << "\n"
+       << "idade: " << client.getIdade() << "\n";
+    return os;
+}

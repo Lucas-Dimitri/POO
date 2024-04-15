@@ -1,6 +1,8 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 #include <string>
+#include <ostream>
+#include <iostream>
 
 class Client
 {
@@ -17,17 +19,19 @@ class Client
         ~Client();
 
         int setNome(std::string nome);
-        std::string getNome();
+        std::string getNome() const;
 
         int setIdade(int idade);
-        int getIdade();
+        int getIdade() const;
 
         int setEndereco(std::string endereco);
-        std::string getEndereco();
+        std::string getEndereco() const;
 
         int setCPF(std::string cpf);
-        std::string getCPF();
+        std::string getCPF() const;
 
+        friend bool operator==(const Client &lhs, const Client &rhs);
+        friend std::ostream &operator<<(std::ostream &os, const Client &client);
 };
 
 #endif
