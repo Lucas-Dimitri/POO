@@ -7,25 +7,25 @@
 class Client
 {
     private:
-        std::string nome;
-        int idade;
-        std::string endereco;
+        std::string name;
+        int age;
+        std::string adress;
         std::string cpf;
 
     public:
 
         Client();
-        Client(std::string nome, int idade, std::string endereco, std::string cpf);
+        Client(std::string name, int age, std::string adress, std::string cpf);
         ~Client();
 
-        int setNome(std::string nome);
-        std::string getNome() const;
+        int setName(std::string name);
+        std::string getName() const;
 
-        int setIdade(int idade);
-        int getIdade() const;
+        int setAge(int age);
+        int getAge() const;
 
-        int setEndereco(std::string endereco);
-        std::string getEndereco() const;
+        int setAdress(std::string adress);
+        std::string getAdress() const;
 
         int setCPF(std::string cpf);
         std::string getCPF() const;

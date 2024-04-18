@@ -7,32 +7,32 @@
 class Vehicle
 {
 private:
-    int capacidade_carga;
-    int ano_fabricacao;
-    std::string chassi;
-    std::string modelo;
+    int loadCapacity;
+    int yearProduction;
+    std::string chassis;
+    std::string model;
     int latitude;  // Latitude coordinate
     int longitude; // Longitude coordinate
 
 public:
     Vehicle();
-    Vehicle(int capacidade_carga, int ano_fabricacao, std::string chassi, std::string modelo, int latitude, int longitude);
+    Vehicle(int loadCapacity, int yearProduction, std::string chassis, std::string model, int latitude, int longitude);
     ~Vehicle();
 
-    int setCapacidade(int capacidade);
-    int getCapacidade() const;
+    int setLoadCapacity(int loadCapacity);
+    int getLoadCapacity() const;
 
-    int setAnoFabricacao(int fabricacao);
-    int getAnoFabricacao() const;
+    int setYearProduction(int yearProduction);
+    int getYearProduction() const;
 
-    int setChassi(std::string chassi);
-    std::string getChassi() const;
+    int setChassis(std::string chassis);
+    std::string getChassis() const;
 
-    void setLocalizacao(int latitude, int longitude);
-    std::pair<int, int> getLocalizacao() const;
+    void setLocation(int latitude, int longitude);
+    std::pair<int, int> getLocation() const;
 
-    int setModelo(std::string modelo);
-    std::string getModelo() const;
+    int setModel(std::string model);
+    std::string getModel() const;
 
     friend bool operator==(const Vehicle &lhs, const Vehicle &rhs);
     friend std::ostream &operator<<(std::ostream &os, const Vehicle &vehicle);

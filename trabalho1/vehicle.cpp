@@ -2,82 +2,82 @@
 #include <iostream>
 #include <string>
 
-Vehicle::Vehicle(): capacidade_carga(0), ano_fabricacao(0), chassi(""), modelo(""), latitude(0), longitude(0) {}
+Vehicle::Vehicle(): loadCapacity(0), yearProduction(0), chassis(""), model(""), latitude(0), longitude(0) {}
 
-Vehicle::Vehicle(int capacidade_carga, int ano_fabricacao, std::string chassi, std::string modelo, int latitude, int longitude)
-    : capacidade_carga(capacidade_carga), ano_fabricacao(ano_fabricacao), chassi(chassi), modelo(modelo), latitude(latitude), longitude(longitude) {}
+Vehicle::Vehicle(int loadCapacity, int yearProduction, std::string chassis, std::string model, int latitude, int longitude)
+    : loadCapacity(loadCapacity), yearProduction(yearProduction), chassis(chassis), model(model), latitude(latitude), longitude(longitude) {}
 
 Vehicle::~Vehicle() {}
 
-int Vehicle::setAnoFabricacao(int fabricacao)
+int Vehicle::setYearProduction(int yearProduction)
 {
-    if (fabricacao > 1884 && fabricacao < 2026)
+    if (yearProduction > 1884 && yearProduction < 2026)
     {
-        this->ano_fabricacao = fabricacao;
+        this->yearProduction = yearProduction;
         return 1;
     }
     return 0;
 }
-int Vehicle::getAnoFabricacao() const { return this->ano_fabricacao; }
+int Vehicle::getYearProduction() const { return this->yearProduction; }
 
-int Vehicle::setCapacidade(int capacidade_carga)
+int Vehicle::setLoadCapacity(int loadCapacity)
 {
-    if (capacidade_carga > 10 && capacidade_carga < 1000000)
+    if (loadCapacity > 10 && loadCapacity < 1000000)
     {
-        this->capacidade_carga = capacidade_carga;
+        this->loadCapacity = loadCapacity;
         return 1;
     }
     return 0;
 }
-int Vehicle::getCapacidade() const { return this->capacidade_carga; }
+int Vehicle::getLoadCapacity() const { return this->loadCapacity; }
 
-int Vehicle::setChassi(std::string chassi)
+int Vehicle::setChassis(std::string chassis)
 {
-    if (chassi.size() == 17)
+    if (chassis.size() == 17)
     {
-        this->chassi = chassi;
+        this->chassis = chassis;
         return 1;
     }
     return 0;
 }
-std::string Vehicle::getChassi() const { return this->chassi; }
+std::string Vehicle::getChassis() const { return this->chassis; }
 
-void Vehicle::setLocalizacao(int latitude, int longitude)
+void Vehicle::setLocation(int latitude, int longitude)
 {
     this->latitude = latitude;
     this->longitude = longitude;
 }
-std::pair<int, int> Vehicle::getLocalizacao() const
+std::pair<int, int> Vehicle::getLocation() const
 {
     return std::make_pair(latitude, longitude);
 }
 
-int Vehicle::setModelo(std::string modelo)
+int Vehicle::setModel(std::string model)
 {
-    if (modelo.size() < 20)
+    if (model.size() < 20)
     {
-        this->modelo = modelo;
+        this->model = model;
         return 1;
     }
     return 0;
 }
-std::string Vehicle::getModelo() const { return this->modelo; }
+std::string Vehicle::getModel() const { return this->model; }
 
 bool operator==(const Vehicle &lhs, const Vehicle &rhs)
 {
-    return lhs.getAnoFabricacao() == rhs.getAnoFabricacao() &&
-           lhs.getCapacidade() == rhs.getCapacidade() &&
-           lhs.getChassi() == rhs.getChassi() &&
-           lhs.getLocalizacao() == rhs.getLocalizacao() &&
-           lhs.getModelo() == rhs.getModelo();
+    return lhs.getYearProduction() == rhs.getYearProduction() &&
+           lhs.getLoadCapacity() == rhs.getLoadCapacity() &&
+           lhs.getChassis() == rhs.getChassis() &&
+           lhs.getLocation() == rhs.getLocation() &&
+           lhs.getModel() == rhs.getModel();
 }
 
 std::ostream &operator<<(std::ostream &os, const Vehicle &vehicle)
 {
-    os << "Ano de fabricacao: " << vehicle.getAnoFabricacao() << "\n"
-       << "Capacidade: " << vehicle.getCapacidade() << "\n"
-       << "Chassi: " << vehicle.getChassi() << "\n"
-       << "Localizacao: " << vehicle.getLocalizacao().first << ", " << vehicle.getLocalizacao().second << "\n"
-       << "Modelo: " << vehicle.getModelo() << "\n";
+    os << "Year of production: " << vehicle.getYearProduction() << "\n"
+       << "Load capacity: " << vehicle.getLoadCapacity() << "\n"
+       << "Chassis: " << vehicle.getChassis() << "\n"
+       << "Location: " << vehicle.getLocation().first << ", " << vehicle.getLocation().second << "\n"
+       << "Model: " << vehicle.getModel() << "\n";
     return os;
 }
