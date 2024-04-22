@@ -5,9 +5,9 @@
 #include "client.h"
 
 
-Order::Order() : client("", 0, "", ""), transportationType(""), pickupLocation(""), dropoffLocation(""), loadWeight(0), loadVolume(0) {}
+Order::Order() : client("", 0, "", ""), transportationType(""), dropoffLocation(""), loadWeight(0), loadVolume(0), latitude(0), longitude(0) {}
 
-Order::Order(Client client, std::string transportationType, std::string pickupLocation, std::string dropoffLocation, int loadWeight, int loadVolume) : client(client), transportationType(transportationType), pickupLocation(pickupLocation), dropoffLocation(dropoffLocation), loadWeight(loadWeight), loadVolume(loadVolume) {}
+Order::Order(Client client, std::string transportationType, std::string dropoffLocation, int loadWeight, int loadVolume, int latitude, int longitude) : client(client), transportationType(transportationType), dropoffLocation(dropoffLocation), loadWeight(loadWeight), loadVolume(loadVolume), latitude(latitude), longitude(longitude) {}
 
 Order::~Order() {}
 
@@ -28,16 +28,15 @@ int Order::setTransportationType(std::string transportationType)
 }
 std::string Order::getTransportationType() const { return this->transportationType; }
 
-int Order::setPickupLocation(std::string pickupLocation)
+int Order::setPickupLocation(int latitude, int longitude)
 {
-    if (pickupLocation.size() < 30)
-    {
-        this->pickupLocation = pickupLocation;
-        return 1;
-    }
-    return 0;
+    this->latitude = latitude;
+    this->longitude = longitude;
 }
-std::string Order::getPickupLocation() const { return this->pickupLocation; }
+std::pair<int, int> Order::getPickupLocation() const
+{
+    return std::make_pair(latitude, longitude);
+}
 
 int Order::setDropoffLocation(std::string dropoffLocation)
 {
@@ -85,7 +84,7 @@ bool operator==(const Order &lhs, const Order &rhs)
 std::ostream &operator<<(std::ostream &os, const Order &pedido)
 {
     os << "Client: " << pedido.getClient() << "\n"
-       << "Pick up Location: " << pedido.getPickupLocation() << "\n"
+       << "Pick up Location -> latitude: " << pedido.getPickupLocation().first << " longitude: " << pedido.getPickupLocation().second << "\n"
        << "Drop-off location: " << pedido.getDropoffLocation() << "\n"
        << "Load Weight: " << pedido.getLoadWeight() << "\n"
        << "Transportation type: " << pedido.getTransportationType() << "\n"

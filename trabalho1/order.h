@@ -1,6 +1,7 @@
 #ifndef order_H
 #define order_H
 #include <string>
+#include <vector>
 #include "client.h"
 
 class Order
@@ -8,16 +9,17 @@ class Order
     private:
         Client client;
         std::string transportationType;
-        std::string pickupLocation;
         std::string dropoffLocation;
         int loadWeight;
         int loadVolume;
+        int latitude;
+        int longitude;
 
     public:
         //metodos de classe
 
         Order();
-        Order(Client client, std::string transportationType, std::string pickupLocation, std::string dropoffLocation, int loadWeight, int loadVolume);
+        Order(Client client, std::string transportationType, std::string dropoffLocation, int loadWeight, int loadVolume, int latitude, int longitude);
         ~Order();
 
         void setClient(Client client);
@@ -26,8 +28,8 @@ class Order
         int setTransportationType(std::string transportationType);
         std::string getTransportationType() const;
 
-        int setPickupLocation(std::string pickupLocation);
-        std::string getPickupLocation() const;
+        int setPickupLocation(int latitude, int longitude);
+        std::pair<int, int> getPickupLocation() const;
 
         int setDropoffLocation(std::string dropoffLocation);
         std::string getDropoffLocation() const;
