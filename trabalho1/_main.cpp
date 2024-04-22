@@ -2,33 +2,40 @@
 #include <string>
 #include <vector>
 #include "client.h"
-#include "pedidos.h"
+#include "order.h"
 #include "vehicle.h"
-#include "caminhao.h"
+#include "truck.h"
+#include "transportation.h"
+#include "manageVehicle.h"
 
 
 int main()
 {
-    Client cliente1("Glauber", 38, "Rua 123, 321", "000.111.222-3");
-    Client *cliente2 = new Client("Osvaldo", 22, "Rua 123, 321", "333.222.111-0");
+    Client client1("Glauber", 38, "Rua 123, 321", "000.111.222-3");
 
-    Pedidos pedido1(cliente1, "carro", "Rua 123", "rua 321", 100, "300 litros");
+    Order order1(client1, "carro", "Rua 123", "rua 321", 100, "300 litros");
 
-    Caminhao *caminhao2 = new Caminhao(100, 2000, "11111111111111111", "focus", "Rua ###", 3, 3);
-    Vehicle veiculo1 = Vehicle(100, 2000, "12312312312312312", "prisma", 3, 3);
+    Truck *truck1 = new Truck(100, 2000, "11111111111111111", "focus", 3, 3, 3, true);
+    Truck truck2 = Truck(100, 2000, "11111111111111111", "focus", 3, 3, 3, true);
+    Vehicle vehicle1 = Vehicle(100, 2000, "12312312312312312", "prisma", 3, 3, 3.4, true);
 
-    Vehicle::pushVeiculo(100, 2000, "12312312312312312", "prisma", "Rua x");
-    Vehicle::buscarVeiculo("12312312312312312");
+    manageVehicle::pushVehicle(vehicle1);
+    manageVehicle::pushVehicle(truck2);
 
-    if(veiculo1 == Vehicle::vehicleList[0]) printf("Sao iguais\n");
-    else printf("Nao sao iguais\n");
 
-    if (caminhao1 == caminhao2)
-        printf("Sao iguais\n");
+    Vehicle vehicle2 = manageVehicle::searchVehicle("12312312312312312");
+    std::cout << vehicle2 << "\n";
+
+    if (vehicle1 == vehicle2) printf("Equals\n");
+    else printf("Not equals\n");
+
+    if (*truck1 == truck2) printf("Equals\n");
     else
-        printf("Nao sao iguais\n");
+        printf("Not equals\n");
 
-    std::cout << caminhao1;
+    std::cout << truck1;
+
+    delete(truck1);
 
     return 0;
 }

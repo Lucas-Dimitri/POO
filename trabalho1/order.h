@@ -11,13 +11,13 @@ class Order
         std::string pickupLocation;
         std::string dropoffLocation;
         int loadWeight;
-        std::string loadVolume;
+        int loadVolume;
 
     public:
         //metodos de classe
 
         Order();
-        Order(Client client, std::string transportationType, std::string pickupLocation, std::string dropoffLocation, int loadWeight, std::string loadVolume);
+        Order(Client client, std::string transportationType, std::string pickupLocation, std::string dropoffLocation, int loadWeight, int loadVolume);
         ~Order();
 
         void setClient(Client client);
@@ -35,8 +35,8 @@ class Order
         int setLoadWeight(int weight);
         int getLoadWeight() const;
 
-        int setLoadVolume(std::string volume);
-        std::string getLoadVolume() const;
+        int setLoadVolume(int volume);
+        int getLoadVolume() const;
 
         friend bool operator==(const Order& lhs, const Order& rhs);
         friend std::ostream& operator<<(std::ostream& os, const Order& Order);

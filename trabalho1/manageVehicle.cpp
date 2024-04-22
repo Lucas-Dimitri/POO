@@ -8,6 +8,11 @@ void manageVehicle::pushVehicle(Vehicle vehicle)
     vehicleList.push_back(vehicle);
 }
 
+void manageVehicle::pushVehicle(Truck truck)
+{
+    vehicleList.push_back(truck);
+}
+
 void manageVehicle::popVehicle()
 {
     if (!vehicleList.empty()) vehicleList.pop_back();

@@ -13,10 +13,11 @@ private:
     std::string model;
     int latitude;  // Latitude coordinate
     int longitude; // Longitude coordinate
-
+    float height;
+    bool available;
 public:
     Vehicle();
-    Vehicle(int loadCapacity, int yearProduction, std::string chassis, std::string model, int latitude, int longitude);
+    Vehicle(int loadCapacity, int yearProduction, std::string chassis, std::string model, int latitude, int longitude, float height, bool available);
     ~Vehicle();
 
     int setLoadCapacity(int loadCapacity);
@@ -33,6 +34,9 @@ public:
 
     int setModel(std::string model);
     std::string getModel() const;
+
+    int setHeight(int height);
+    float getHeight() const;
 
     friend bool operator==(const Vehicle &lhs, const Vehicle &rhs);
     friend std::ostream &operator<<(std::ostream &os, const Vehicle &vehicle);

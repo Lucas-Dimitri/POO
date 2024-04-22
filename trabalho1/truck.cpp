@@ -3,21 +3,9 @@
 #include "vehicle.h"
 #include "truck.h"
 
-Truck::Truck() : Vehicle(), height(0) {}
-Truck::Truck(int loadLoadCapacity, int yearProduction, std::string chassiss, std::string model, int latitude, int longitude, int height) : Vehicle(loadLoadCapacity, yearProduction, chassiss, model, latitude, longitude), height(height) {}
+Truck::Truck() : Vehicle() {}
+Truck::Truck(int loadCapacity, int yearProduction, std::string chassiss, std::string model, int latitude, int longitude, int height, bool available) : Vehicle(loadCapacity, yearProduction, chassiss, model, latitude, longitude, height, available){}
 Truck::~Truck(){}
-
-int Truck::setHeight(int height)
-{
-    if (height < 10)
-    {
-        this->height = height;
-        return 1;
-    }
-    return 0;   
-}
-
-int Truck::getHeight() const { return this->height; }
 
 bool operator==(const Truck &lhs, const Truck &rhs)
 {
@@ -26,16 +14,18 @@ bool operator==(const Truck &lhs, const Truck &rhs)
            lhs.getLoadCapacity() == rhs.getLoadCapacity() &&
            lhs.getLocation() == rhs.getLocation() &&
            lhs.getModel() == rhs.getModel() &&
-           lhs.getYearProduction() == rhs.getYearProduction();
+           lhs.getYearProduction() == rhs.getYearProduction() &&
+           lhs.getHeight() == rhs.getHeight();
 }
 
-std::ostream &operator<<(std::ostream &os, const Truck &caminhao)
+std::ostream &operator<<(std::ostream &os, const Truck &truck)
 {
-    os << "Height: " << caminhao.getHeight() << "\n"
-       << "Chassis: " << caminhao.getChassis() << "\n"
-       << "Load Capacity: " << caminhao.getLoadCapacity() << "\n"
-       << "Location: " << caminhao.getLocation().first << ", " << caminhao.getLocation().second << "\n"
-       << "Model: " << caminhao.getModel() << "\n"
-       << "Year of Production: " << caminhao.getYearProduction() << "\n";
+    os << "Height: " << truck.getHeight() << "\n"
+       << "Chassis: " << truck.getChassis() << "\n"
+       << "Load Capacity: " << truck.getLoadCapacity() << "\n"
+       << "Location: " << truck.getLocation().first << ", " << truck.getLocation().second << "\n"
+       << "Model: " << truck.getModel() << "\n"
+       << "Year of Production: " << truck.getYearProduction() << "\n"
+       << "Truck height: " << truck.getHeight() << "\n";
     return os;
 }

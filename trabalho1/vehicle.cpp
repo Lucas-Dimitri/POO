@@ -2,10 +2,9 @@
 #include <iostream>
 #include <string>
 
-Vehicle::Vehicle(): loadCapacity(0), yearProduction(0), chassis(""), model(""), latitude(0), longitude(0) {}
+Vehicle::Vehicle(): loadCapacity(0), yearProduction(0), chassis(""), model(""), latitude(0), longitude(0), height(0), available(true) {}
 
-Vehicle::Vehicle(int loadCapacity, int yearProduction, std::string chassis, std::string model, int latitude, int longitude)
-    : loadCapacity(loadCapacity), yearProduction(yearProduction), chassis(chassis), model(model), latitude(latitude), longitude(longitude) {}
+Vehicle::Vehicle(int loadCapacity, int yearProduction, std::string chassis, std::string model, int latitude, int longitude, float height, bool available) : loadCapacity(loadCapacity), yearProduction(yearProduction), chassis(chassis), model(model), latitude(latitude), longitude(longitude), height(height), available(available){}
 
 Vehicle::~Vehicle() {}
 
@@ -63,13 +62,26 @@ int Vehicle::setModel(std::string model)
 }
 std::string Vehicle::getModel() const { return this->model; }
 
+int Vehicle::setHeight(int height)
+{
+    if (height < 10)
+    {
+        this->height = height;
+        return 1;
+    }
+    return 0;
+}
+
+float Vehicle::getHeight() const { return this->height; }
+
 bool operator==(const Vehicle &lhs, const Vehicle &rhs)
 {
     return lhs.getYearProduction() == rhs.getYearProduction() &&
            lhs.getLoadCapacity() == rhs.getLoadCapacity() &&
            lhs.getChassis() == rhs.getChassis() &&
            lhs.getLocation() == rhs.getLocation() &&
-           lhs.getModel() == rhs.getModel();
+           lhs.getModel() == rhs.getModel() &&
+           lhs.getHeight() == rhs.getHeight();
 }
 
 std::ostream &operator<<(std::ostream &os, const Vehicle &vehicle)
@@ -78,6 +90,7 @@ std::ostream &operator<<(std::ostream &os, const Vehicle &vehicle)
        << "Load capacity: " << vehicle.getLoadCapacity() << "\n"
        << "Chassis: " << vehicle.getChassis() << "\n"
        << "Location: " << vehicle.getLocation().first << ", " << vehicle.getLocation().second << "\n"
-       << "Model: " << vehicle.getModel() << "\n";
+       << "Model: " << vehicle.getModel() << "\n"
+       << "Vehicle height: " << vehicle.getHeight() << "\n";
     return os;
 }

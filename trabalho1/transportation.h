@@ -7,13 +7,9 @@
 
 class Transportation
 {
-private:
-    Order order;
-
-public:
-
-    int setcapacity(int capacity);
-    int getCapacity() const;
+    public:
+        void prepareOrder(Order order);
+    
 };
 
 #endif

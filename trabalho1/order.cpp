@@ -5,9 +5,9 @@
 #include "client.h"
 
 
-Order::Order() : client("", 0, "", ""), transportationType(""), pickupLocation(""), dropoffLocation(""), loadWeight(0), loadVolume("") {}
+Order::Order() : client("", 0, "", ""), transportationType(""), pickupLocation(""), dropoffLocation(""), loadWeight(0), loadVolume(0) {}
 
-Order::Order(Client client, std::string transportationType, std::string pickupLocation, std::string dropoffLocation, int loadWeight, std::string loadVolume) : client(client), transportationType(transportationType), pickupLocation(pickupLocation), dropoffLocation(dropoffLocation), loadWeight(loadWeight), loadVolume(loadVolume) {}
+Order::Order(Client client, std::string transportationType, std::string pickupLocation, std::string dropoffLocation, int loadWeight, int loadVolume) : client(client), transportationType(transportationType), pickupLocation(pickupLocation), dropoffLocation(dropoffLocation), loadWeight(loadWeight), loadVolume(loadVolume) {}
 
 Order::~Order() {}
 
@@ -61,16 +61,16 @@ int Order::setLoadWeight(int loadWeight)
 }
 int Order::getLoadWeight() const { return this->loadWeight; }
 
-int Order::setLoadVolume(std::string loadVolume)
+int Order::setLoadVolume(int loadVolume)
 {
-    if (loadVolume.size() < 7)
+    if (loadVolume < 7)
     {
         this->loadVolume = loadVolume;
         return 1;
     }
     return 0;
 }
-std::string Order::getLoadVolume() const { return this->loadVolume; }
+int Order::getLoadVolume() const { return this->loadVolume; }
 
 bool operator==(const Order &lhs, const Order &rhs)
 {
