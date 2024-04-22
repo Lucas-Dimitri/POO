@@ -5,13 +5,21 @@
 #include "order.h"
 #include "manageVehicle.h"
 
-void prepareOrder(Order order)
+
+
+std::vector<Vehicle> prepareOrder(Order order, std::vector<Vehicle> vehicleForOrder)
 {
     int load = 0;
     for(auto &vehicle : manageVehicle::vehicleList)
     {
-        load += vehicle.getLoadCapacity();
-        vehicle.available = false;
-        if (order.getLoadVolume() <= load) return;
+        if(vehicle.getAvailable())
+        {
+            load += vehicle.getLoadCapacity();
+            vehicle.setAvailable(false);
+            vehicleForOrder.push_back(vehicle);
+
+            if (order.getLoadVolume() <= load)
+                return vehicleForOrder;
+        }
     }
 }

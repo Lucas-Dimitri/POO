@@ -38,6 +38,9 @@ public:
     int setHeight(int height);
     float getHeight() const;
 
+    int setAvailable(bool available);
+    bool getAvailable() const;
+
     friend bool operator==(const Vehicle &lhs, const Vehicle &rhs);
     friend std::ostream &operator<<(std::ostream &os, const Vehicle &vehicle);
 };

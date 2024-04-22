@@ -74,7 +74,13 @@ int Vehicle::setHeight(int height)
 
 float Vehicle::getHeight() const { return this->height; }
 
-bool operator==(const Vehicle &lhs, const Vehicle &rhs)
+int Vehicle::setAvailable(bool available)
+{
+    this->available = available;
+}
+bool Vehicle::getAvailable() const { return this->available; }
+
+    bool operator==(const Vehicle &lhs, const Vehicle &rhs)
 {
     return lhs.getYearProduction() == rhs.getYearProduction() &&
            lhs.getLoadCapacity() == rhs.getLoadCapacity() &&
