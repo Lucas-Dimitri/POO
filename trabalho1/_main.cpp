@@ -7,13 +7,14 @@
 #include "truck.h"
 #include "transportation.h"
 #include "manageVehicle.h"
+#include "transportation.h"
 
 
 int main()
 {
     Client client1("Glauber", 38, "Rua 123, 321", "000.111.222-3");
 
-    Order order1(client1, "carro", "Rua 123", "rua 321", 100, "300 litros");
+    Order order1(client1, "carro", "rua 321", 100, 32, 3, 4);
 
     Truck *truck1 = new Truck(100, 2000, "11111111111111111", "focus", 3, 3, 3, true);
     Truck truck2 = Truck(100, 2000, "11111111111111111", "focus", 3, 3, 3, true);
