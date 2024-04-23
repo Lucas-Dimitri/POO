@@ -1,23 +1,25 @@
-################## realizado ####################
+# Sistema de Gerenciamento de Veículos e Pedidos
 
-Tarefa 1:
+Este projeto implementa um sistema simples de gerenciamento de veículos e pedidos em C++. Abaixo está um resumo das tarefas realizadas:
 
--Criação das classes vehicle, order e client
--Criação do Contrutor e Construtor default para as classe
+## Tarefa 1:
 
-Tarefa 2:
+- Criação das classes `Veículo`, `Pedido` e `Cliente`.
+- Implementação dos construtores e construtores padrão para essas classes.
 
--arquivos separados por classe
--Criação de get e set pra todos os atributos
--Retorno de 1 quando o set retorna corretamente e 0 quando não retorna
--Criação do desconstrutor para as classes
--Criada a classe Truck herdeira de Vehicle
--Criação da classe com a lista de veículos
--Feita as funções de busca, adição e remoção de veículos
+## Tarefa 2:
 
-Tarefa 3:
+- Organização de arquivos separados para cada classe.
+- Adição de métodos getters e setters para todos os atributos.
+- Retorno de 1 em caso de operação de set bem-sucedida e 0 em caso de falha.
+- Adição de destrutores para as classes.
+- Criação da classe `Caminhão` como uma subclasse de `Veículo`.
+- Implementação de uma classe para gerenciar uma lista de veículos.
+- Implementação de funções para buscar, adicionar e remover veículos.
 
--Adição dos operadores == e << para as classes
--Implemento da sobrecarga no Construtor default anteriorme e agora na função de adicionar veículos
--Implementado latitude e longitude nos veículos e ordens
--Criada a classe e função para disponibilizar veículos à um pedido usando o volume como fator de capacide.
+## Tarefa 3:
+
+- Adição dos operadores `==` e `<<` para as classes.
+- Sobrecarga do construtor padrão anteriormente e agora na função para adicionar veículos.
+- Adição dos atributos de latitude e longitude para veículos e pedidos.
+- Criação de uma classe e função para disponibilizar veículos para um pedido usando o volume como fator de capacidade.
