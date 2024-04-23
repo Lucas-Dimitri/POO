@@ -1,13 +1,13 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "client.h"
-#include "order.h"
-#include "vehicle.h"
-#include "truck.h"
-#include "transportation.h"
-#include "manageVehicle.h"
-#include "transportation.h"
+
+#include "clients/client.h"
+#include "orders/order.h"
+#include "vehicles/vehicle.h"
+#include "vehicles/truck.h"
+#include "orders/transportation.h"
+#include "vehicles/manageVehicle.h"
 
 
 int main()
