@@ -23,7 +23,6 @@ std::ostream &operator<<(std::ostream &os, const Truck &truck)
     os << "Height: " << truck.getHeight() << "\n"
        << "Chassis: " << truck.getChassis() << "\n"
        << "Load Capacity: " << truck.getLoadCapacity() << "\n"
-       << "Location: " << truck.getLocation().first << ", " << truck.getLocation().second << "\n"
        << "Model: " << truck.getModel() << "\n"
        << "Year of Production: " << truck.getYearProduction() << "\n"
        << "Truck height: " << truck.getHeight() << "\n";

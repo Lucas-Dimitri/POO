@@ -2,10 +2,19 @@
 #include <iostream>
 #include <string>
 
-Vehicle::Vehicle(): loadCapacity(0), yearProduction(0), chassis(""), model(""), latitude(0), longitude(0), height(0), available(true) {}
+Vehicle::Vehicle(): loadCapacity(0), yearProduction(0), chassis(""), model(""), coordinates(0, 0), height(0), available(true) {}
 
-Vehicle::Vehicle(int loadCapacity, int yearProduction, std::string chassis, std::string model, int latitude, int longitude, float height, bool available) : loadCapacity(loadCapacity), yearProduction(yearProduction), chassis(chassis), model(model), latitude(latitude), longitude(longitude), height(height), available(available){}
+Vehicle::Vehicle(int loadCapacity, int yearProduction, std::string chassis, std::string model, double latitude, double longitude, float height, bool available) {
+    // ADICIONANDO VERIFICADORES NO CONSTRUTOR 
+    if( loadCapacity > 0){
+        this->loadCapacity = loadCapacity;
+    }
+    else{
+        throw std::invalid_argument("Valor invalido para capacidade\n");
+    }
+    coordinates.set_coordinates(latitude, longitude);
 
+} 
 Vehicle::~Vehicle() {}
 
 int Vehicle::setYearProduction(int yearProduction)
@@ -41,14 +50,13 @@ int Vehicle::setChassis(std::string chassis)
 }
 std::string Vehicle::getChassis() const { return this->chassis; }
 
-void Vehicle::setLocation(int latitude, int longitude)
+void Vehicle::setLocation(double latitude, double longitude)
 {
-    this->latitude = latitude;
-    this->longitude = longitude;
+    this->coordinates.set_coordinates(latitude, longitude);
 }
-std::pair<int, int> Vehicle::getLocation() const
+Coordinates Vehicle::getLocation() const
 {
-    return std::make_pair(latitude, longitude);
+    return this->coordinates;
 }
 
 int Vehicle::setModel(std::string model)
@@ -77,6 +85,7 @@ float Vehicle::getHeight() const { return this->height; }
 int Vehicle::setAvailable(bool available)
 {
     this->available = available;
+    return 1;
 }
 bool Vehicle::getAvailable() const { return this->available; }
 
@@ -95,7 +104,7 @@ std::ostream &operator<<(std::ostream &os, const Vehicle &vehicle)
     os << "Year of production: " << vehicle.getYearProduction() << "\n"
        << "Load capacity: " << vehicle.getLoadCapacity() << "\n"
        << "Chassis: " << vehicle.getChassis() << "\n"
-       << "Location: " << vehicle.getLocation().first << ", " << vehicle.getLocation().second << "\n"
+       << "Location: " << vehicle.getLocation() << "\n"
        << "Model: " << vehicle.getModel() << "\n"
        << "Vehicle height: " << vehicle.getHeight() << "\n";
     return os;

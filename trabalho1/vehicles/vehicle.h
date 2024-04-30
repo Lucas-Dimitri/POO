@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include "../coordinates/coordinates.hpp"
 
 class Vehicle
 {
@@ -11,13 +12,12 @@ private:
     int yearProduction;
     std::string chassis;
     std::string model;
-    int latitude;  // Latitude coordinate
-    int longitude; // Longitude coordinate
+    Coordinates coordinates; 
     float height;
     bool available;
 public:
     Vehicle();
-    Vehicle(int loadCapacity, int yearProduction, std::string chassis, std::string model, int latitude, int longitude, float height, bool available);
+    Vehicle(int loadCapacity, int yearProduction, std::string chassis, std::string model, double latitude, double longitude, float height, bool available);
     ~Vehicle();
 
     int setLoadCapacity(int loadCapacity);
@@ -29,8 +29,8 @@ public:
     int setChassis(std::string chassis);
     std::string getChassis() const;
 
-    void setLocation(int latitude, int longitude);
-    std::pair<int, int> getLocation() const;
+    void setLocation(double latitude, double longitude);
+    Coordinates getLocation() const;
 
     int setModel(std::string model);
     std::string getModel() const;

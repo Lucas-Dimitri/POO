@@ -15,6 +15,7 @@ class Client
     public:
 
         Client();
+        Client(std::string name, std::string adress, std::string cpf);
         Client(std::string name, int age, std::string adress, std::string cpf);
         ~Client();
 

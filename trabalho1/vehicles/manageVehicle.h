@@ -8,12 +8,14 @@
 class manageVehicle
 {
     public:
-        static std::vector<Vehicle> vehicleList;
+        std::vector<Vehicle*> vehicleList; // Transformei em uma variavel de instancia e privada 
+    public:
 
-        static void pushVehicle(Vehicle vehicle);
-        static void pushVehicle(Truck truck);
-        static void popVehicle();
-        static Vehicle searchVehicle(std::string chassi);
+        void pushVehicle(Vehicle *vehicle);
+        void popVehicle( Vehicle *vehicle);
+        Vehicle* searchVehicle(std::string chassi);
+        Vehicle* searchBy( int loadWeight);
+        Vehicle* search( int loadWeight, std::string address);
 };
 
 #endif

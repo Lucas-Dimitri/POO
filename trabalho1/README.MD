@@ -24,3 +24,11 @@ Este projeto implementa um sistema simples de gerenciamento de veículos e pedid
 - Adição dos atributos de **latitude** e **longitude** para veículos e pedidos.
 - Criação de uma classe e função para **disponibilizar veículos** para um pedido usando o volume como fator de capacidade.
 
+
+## Tarefa 4:
+- Refatoração de partes dos códigos.
+- Implementação de sistemas de coordenadas.
+- Criação de um sistema de busca de veiculos para atender um pedido
+
+### Dificuldades enfrentadas
+- Dificuldade com o arquivo csv, pois certos trechos estão mal formatados
