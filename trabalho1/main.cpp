@@ -42,7 +42,7 @@ std::vector<std::vector<std::string>> read_csv(const std::string &filename) {
 
     // Fechar o arquivo
     file.close();
-
+    
     return lines;
 }
 
@@ -52,14 +52,12 @@ int main(){
     std::mt19937 gen(rd()); 
     std::uniform_real_distribution<double> dis( -10.6734214, 29.7875286);
 
-    manageVehicle *manage_vehicle;
-
-
-    Vehicle *uno = new Vehicle( 400, 2012, "AUDBA382HC7281", "Uno", 29.7875286, -55.768967, 1000, true);
+    manageVehicle *manage_vehicle = new manageVehicle;
+    Vehicle **vehicle = new Vehicle*[100];
 
     for (int i = 0; i < 100; i++) {
-        Vehicle *vehicle = new Vehicle(rand() % 200 + 400, 2020, "AUDBA382HC7281", "Qualquer", dis(gen), -55.768967, 1000, true);
-        manage_vehicle->vehicleList.push_back(vehicle);
+        vehicle[i] = new Vehicle(rand() % 200 + 400, 2020, "AUDBA382HC7281", "Qualquer", dis(gen), -55.768967, 1000, true);
+        manage_vehicle->vehicleList.push_back(vehicle[i]);
     }
 
 
@@ -68,21 +66,22 @@ int main(){
     std::vector<std::vector<std::string>> csv_data = read_csv("dados_entregas.csv");
     
 
-    for (int i = 1; i < csv_data.size(); i++) {
+    for (const auto& row : csv_data) {
+        
         Client *client = new Client();
-        client->setName(csv_data[i][0]);
-        client->setAdress(csv_data[i][2]);
+        client->setName(row[0]);
+        client->setAdress(row[2]);
 
         // Converte as colunas 7 e 8 para inteiros
-        int origin = std::stoi(csv_data[i][7]);
-        int destination = std::stoi(csv_data[i][8]);
+        int origin = std::stoi(row[7]);
+        int destination = std::stoi(row[8]);
 
-        bool isPriority = (csv_data[i][9] == "sim");
+        bool isPriority = (row[9] == "sim");
 
         // Cria o objeto Order com as informações
-        Order *order = new Order(client, "Car", csv_data[i][5], csv_data[i][6], origin, destination, isPriority);
+        Order *order = new Order(client, "Car", row[5], row[6], origin, destination, isPriority);
 
-        std::cout << "Foi\n";
+        
         manager->addOrder(order);
     }
     
