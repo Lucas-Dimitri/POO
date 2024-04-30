@@ -29,6 +29,7 @@ Este projeto implementa um sistema simples de gerenciamento de veículos e pedid
 - Refatoração de partes dos códigos.
 - Implementação de sistemas de coordenadas.
 - Criação de um sistema de busca de veiculos para atender um pedido
+- Criação do leitor csv.
 
 ### Dificuldades enfrentadas
 - Dificuldade com o arquivo csv, pois certos trechos estão mal formatados
