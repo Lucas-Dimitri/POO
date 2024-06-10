@@ -6,7 +6,7 @@
 #include <string>
 #include <vector>
 #include <curl/curl.h>
-#include "../json.hpp"
+#include "../include/json.hpp"
 
 using json = nlohmann::json;
 
@@ -116,6 +116,7 @@ void clean_csv(std::string csvFile, std::string newCSVFile)
         if (caractere == '\n')
         {
             countBreak++;
+            novoArquivo.put(' ');
             if (countBreak % 7 == 0)
                 novoArquivo.put('\n');
         }

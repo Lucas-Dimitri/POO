@@ -43,7 +43,6 @@ double Coordinates::calculate_distance( Coordinates &c1, Coordinates& c2){
     double distance = R * c;
 
     return distance;
-
 }
 
 

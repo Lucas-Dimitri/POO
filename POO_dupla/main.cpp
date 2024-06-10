@@ -7,9 +7,11 @@
 #include"include/Client.hpp"
 #include "include/Manager.hpp"
 #include "include/Instantiate.hpp"
+#include "include/Vehicle.hpp"
 
-int main(){
+int main()
+{
+    registerFile("dados_entregas.csv", "arquivo_limpo.csv");
+    std::list<Order*>& allOrders = Order::get_instances();
 
-    
 }
-
