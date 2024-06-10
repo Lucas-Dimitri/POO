@@ -17,6 +17,8 @@ class Order {
         Client* client;
         Coordinates collection_point;
         Coordinates delivery_point;
+        Coordinates collection_point;
+        Coordinates delivery_point;
         float weight;
         float volume;
         std::string priority;
@@ -30,6 +32,8 @@ class Order {
 
         int get_id() const;
         Client *get_client() const;
+        Coordinates get_collection_point() const;
+        Coordinates get_delivery_point() const;
         Coordinates get_collection_point() const;
         Coordinates get_delivery_point() const;
         float get_weight() const;
