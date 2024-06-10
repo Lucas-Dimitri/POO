@@ -1,63 +1,63 @@
 #include "reader.h"
 
-std::vector<std::string> Reader::split(const std::string &s, char delimiter) {
-    std::vector<std::string> tokens;
-    std::string token;
-    bool inside_quotes = false;
-    std::istringstream tokenStream(s);
-    char ch;
-    while (tokenStream.get(ch)) {
-        if (ch == '"') {
-            inside_quotes = !inside_quotes; 
-        } else if (ch == delimiter && !inside_quotes) {
-            tokens.push_back(token);
-            token.clear();
+std::vector<std::string> Reader::read_line(std::string line, bool& string_aberta){
+    std::vector<std::string> incomplete_line;
+    std::string pedaco;
+
+    for (char c : line) {
+        if (c == '"') {
+            string_aberta = !string_aberta;
+        } else if (c == ',' && !string_aberta) {
+            incomplete_line.push_back(pedaco);
+            pedaco.clear();
         } else {
-            token += ch;
+            pedaco += c;
         }
     }
-    tokens.push_back(token);
 
-    return tokens;
+    if (!pedaco.empty() && !string_aberta) {
+        incomplete_line.push_back(pedaco);
+    }
+
+    return incomplete_line;
 }
 
 // Função para ler um arquivo CSV e retornar um vetor de vetores de strings
-std::vector<std::vector<std::string>> Reader::read_csv(const std::string& filename) {
-    std::ifstream file(filename);
-    std::vector<std::vector<std::string>> lines;
+std::vector<std::string> Reader::read_csv(const std::string& filename) {
+    // Criando arquivo
+    std::fstream file; 
 
-    if (!file.is_open()) {
-        std::cerr << "Erro ao ler o arquivo " << filename << std::endl;
-        return lines; // Retorna um vetor vazio se houver erro ao abrir o arquivo
-    }
+    // Abrindo arquivo
+    file.open(filename, std::ios::in); 
 
-    std::string line;
-    bool inside_quotes = false;
-    std::string complete_line;
+    // Verificando se houve erro na abertura do arquivo
+    if (!file.is_open())
+        throw std::runtime_error("Arquivo não pôde ser aberto");
 
+    // Declarando variáveis necessárias
+    std::vector<std::string> data;
+    std::string line; 
+    bool string_aberta = false;
+
+    // Pegando cabeçalhos da tabela
     std::getline(file, line);
+    std::vector<std::string> cabecalhos = Reader::read_line(line, string_aberta);
 
+    // Pegando células de todas as linhas
+    std::vector<std::string> partes;
     while (std::getline(file, line)) {
-        if (inside_quotes) {
-            complete_line += "\n" + line;
-            if (line.back() == '"') {
-                inside_quotes = false;
-                std::vector<std::string> fields = split(complete_line, ',');
-                lines.push_back(fields);
-            }
-        } else {
-            if (line.front() == '"' && line.back() != '"') {
-                inside_quotes = true;
-                complete_line = line;
-            } else {
-                std::vector<std::string> fields = split(line, ',');
-                lines.push_back(fields);
-            }
+
+        // Lendo linha e armazenando em um vetor
+        partes = Reader::read_line(line, string_aberta);
+
+        // Inserindo células na lista de dados
+        for (std::string parte : partes){
+            data.push_back(parte);
         }
     }
 
-    
+    // Fechando arquivo
     file.close();
 
-    return lines;
+    return data;
 }

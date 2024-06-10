@@ -9,19 +9,21 @@ Manager::Manager(manageVehicle *vehicles) {
 
 bool Manager::fulfillOrder(Order *order, int quant) {
     int ld = order->getLoadWeight();
-    int i = 1;
     int num_vehicles = 0;
+    int i = 1;
 
-    while (num_vehicles < quant && i > quant + num_vehicles) {
+    while ( ld > 1 && quant >  num_vehicles && i < quant) {
         Vehicle *vehicle = this->vehicles->search(ld / i, order->getCollectPoint());
 
         if (vehicle) {
             ld -= vehicle->getLoadCapacity();
             order->addVehicle(vehicle);
             num_vehicles++;
-        } else {
+        }
+        else{
             i++;
         }
+        
     }
 
     if (num_vehicles > 0) {
@@ -32,6 +34,7 @@ bool Manager::fulfillOrder(Order *order, int quant) {
         return false;
     }
 }
+
 
 void Manager::addOrder(Order *order) {
     if (order->isPriority()) {
@@ -48,10 +51,12 @@ void Manager::addOrder(Order *order) {
 }
 
 void Manager::fulfillOrders() {
-    auto it = orders.begin();
+    auto it = this->orders.begin();
+    
     while (it != orders.end()) {
         if (fulfillOrder(*it, 10)) {
             // Remover da lista e adicionar a orders_fulfilled
+            std::cout << "Atendido\n";
             orders_fulfilled.push_back(*it);
             it = orders.erase(it);
         } else {

@@ -4,6 +4,15 @@
 
 Client::Client(): name(""), age(0), adress(""), cpf("") {}
 Client::Client(std::string name, int age, std::string adress, std::string cpf) :name(name), age(age), adress(adress), cpf(cpf) {}
+Client::Client(std::string name, int age, std::string adress, std::string cpf, std::string email, std::string phoneNumber){
+    this->name = name;
+    this->age = age;
+    this->adress = adress;
+    this->cpf = cpf;
+    this->email = email;
+    this->phoneNumber = phoneNumber;
+
+}
 Client::~Client(){}
 
 int Client::setName(std::string name){
@@ -48,6 +57,18 @@ int Client::setCPF(std::string cpf)
     return 0;
 }
 std::string Client::getCPF() const { return this->cpf; }
+
+int Client::setEmail( std::string email){
+    this->email = email;
+    return 1;
+}
+std::string Client::getEmail() const{ return this->email; }
+
+int Client::setPhoneNumber( std::string phoneNumber){
+    this->phoneNumber = phoneNumber;
+
+    return 1;
+}
 
 bool operator==(const Client &lhs, const Client &rhs)
 {

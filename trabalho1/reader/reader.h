@@ -15,9 +15,9 @@
 
 class Reader{
     private:
-        std::vector<std::string> split(const std::string &s, char delimiter);
+        static std::vector<std::string> read_line(std::string line, bool& string_aberta);
     public:
-        std::vector<std::vector<std::string>> read_csv(const std::string& filename);
+        static std::vector<std::string>read_csv(const std::string& filename);
 };
 
 #endif

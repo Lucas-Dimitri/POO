@@ -32,7 +32,7 @@ Vehicle* manageVehicle::searchVehicle(std::string chassi)
 Vehicle* manageVehicle::search( int loadWeight, std::string address){
     int radius = 10;        // Definindo o raio de busca inicial como 10 km 
 
-    while( radius < 4000){
+    while( radius < 100000){
         for ( auto &vehicle : vehicleList){
             if( vehicle->getAvailable() && vehicle->getLoadCapacity() >= loadWeight && radius>Coordinates::calculate_distance( vehicle->getLocation(), address)){
                 return vehicle;
