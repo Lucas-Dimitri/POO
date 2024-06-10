@@ -39,7 +39,6 @@ void clean_csv(std::string csvFile, std::string newCSVFile)
             novoArquivo.put(caractere);
     }
     arquivo.close();
-
 }
 
 void create_order(std::string csv)
