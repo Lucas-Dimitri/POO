@@ -17,7 +17,7 @@ int Manager::add_order( Order* order){
     return 0;
 }
 
-int Manager::add_order( int client_id, Coordinates collection_point, Coordinates delivery_point, float weight, float size, std::string priority)
+int Manager::add_order( int client_id, Coordinates collection_point, Coordinates delivery_point, float weight, float size, bool priority)
 {
     Order * order = new Order(client_id, collection_point, delivery_point, weight, size, priority);
 

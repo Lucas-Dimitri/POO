@@ -10,7 +10,7 @@ void Order::increment_id() {
 
 std::list<Order*>& Order::get_instances() { return instances; }
 
-Order::Order(int client_id,  Coordinates collection_point, Coordinates delivery_point, float weight, float volume, std::string priority) {
+Order::Order(int client_id,  Coordinates collection_point, Coordinates delivery_point, float weight, float volume, bool priority) {
     this->id = prox_id;
     increment_id();
 
@@ -36,7 +36,7 @@ Order::Order(int client_id,  Coordinates collection_point, Coordinates delivery_
         throw std::invalid_argument("Valor inválido para volume");
     this->volume = volume;
 
-    if (priority != "sim" || priority != "não")
+    if (priority != true && priority != false)
         throw std::invalid_argument("Valor inválido para prioridade");
     this->priority = priority;
 
@@ -60,6 +60,8 @@ Coordinates Order::get_delivery_point() const { return delivery_point; }
 float Order::get_weight() const { return this->weight; }
 
 float Order::get_volume() const { return volume; }
+
+bool Order::get_priority() const { return priority; }
 
 
 
@@ -92,9 +94,9 @@ int Order::set_volume(float volume) {
     return 0;
 }
 
-int Order::set_priority(std::string priority)
+int Order::set_priority(bool priority)
 {
-    if (priority == "sim" || priority == "não")
+    if (priority == true || priority == false)
     {
         this->priority = priority;
         return 1;

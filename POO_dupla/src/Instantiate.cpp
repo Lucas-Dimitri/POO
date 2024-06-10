@@ -158,12 +158,17 @@ void create_order(std::string csv)
         std::list<Client*>& allClients = Client::get_instances();
         for (Client* client : allClients)
         {
+
+            bool prio;
+            if (row[9][0] == 's' || row[9][0] == 'y' || row[9][0] == true || row[9][0] == 'S' || row[9][0] == 'Y') prio = true;
+            else prio = false;
+
             std::pair<double, double> coords1 = getCoordinates(row[5]);
             std::pair<double, double> coords2 = getCoordinates(row[6]);
 
             if (row[1] == client->get_cpf())
             {
-                Order *newObject = new Order(client->get_id(), Coordinates(coords1.first, coords2.second), Coordinates(coords2.first, coords2.second), std::stof(row[7]), std::stof(row[8]), row[9]);
+                Order *newObject = new Order(client->get_id(), Coordinates(coords1.first, coords2.second), Coordinates(coords2.first, coords2.second), std::stof(row[7]), std::stof(row[8]), prio);
             }
         }
     }
