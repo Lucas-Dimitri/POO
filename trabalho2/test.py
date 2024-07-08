@@ -1,16 +1,7 @@
-import re
+list1 = [1, 2, 3]
 
-# Definindo o padrão da regex para validar CPF
-pattern = r'^\d{3}\.\d{3}\.\d{3}-\d{2}$|^\d{11}$'
-regex = re.compile(pattern)
+list2 = list1
 
-# Função para validar o CPF e padronizar
-def validar_cpf(cpf):
-    # Remover todos os caracteres não numéricos
-    numeros = re.sub(r'\D', '', cpf)
+list1.pop()
 
-    # Verificar se a string inteira corresponde ao padrão da regex
-    if regex.fullmatch(cpf):
-        return True, numeros
-    else:
-        return False, None
+print(list2)
