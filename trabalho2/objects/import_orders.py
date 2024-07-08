@@ -4,7 +4,7 @@ from geopy.geocoders import Nominatim
 import csv
 
 def main():
-    arquivo = r'c:\Users\lucas\OneDrive\Documents\faculdade\terceiro semestre\POO\trabalho2\objects\mydata.csv'
+    arquivo = r'c:\Users\lucas\OneDrive\Documents\faculdade\terceiro semestre\POO\trabalho2\objects\dados_entregas.csv'
     create_orders_from_csv(arquivo)
     for client in Client.clientList:
         print(client)
